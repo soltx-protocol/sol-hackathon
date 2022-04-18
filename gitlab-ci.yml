@@ -1,0 +1,186 @@
+before_script:
+  # Install yarn
+  # ref: https://yarnpkg.com/zh-Hans/docs/install#linux-tab
+  # - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+  # - echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+  # - apt-get update -y
+  # - apt-get install yarn -y
+  # install ssh-agent
+  # ref: https://docs.gitlab.com/ee/ci/ssh_keys/README.html
+  # - 'which ssh-agent || ( apt-get install openssh-client -y )'
+  # run ssh-agent
+  # - eval $(ssh-agent -s)
+  # add ssh key stored in SSH_PRIVATE_KEY variable to the agent store
+  # - ssh-add <(echo "$SSH_PRIVATE_KEY")
+  # disable host key checking (NOTE: makes you susceptible to man-in-the-middle attacks)
+  # WARNING: use only in docker container, if you use it with shell you will overwrite your user's ssh config
+  # - mkdir -p ~/.ssh
+  # - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  - pwd
+  - which nodejs
+  - nodejs -v
+  - which npm
+  - npm -v
+  - which yarn
+  - yarn --version
+  - yarn config set cache-folder .yarn
+
+cache:
+  key: '$CI_BUILD_REF_NAME'
+  paths:
+    - node_modules/
+    - .yarn/
+
+# jobs sequense pipeline
+stages:
+  - test
+  - build
+  - deploy
+
+# test job: lint, test project
+test:
+  tags:
+    - node-14
+  script:
+    - yarn install
+    - yarn lint
+    - yarn test
+  stage: test
+
+# build job: build project and upload artifacts for deploy
+build-develop:
+  # It would upload artifacts to gitlab and next stage for deploy
+  artifacts:
+    name: '${CI_BUILD_REF_NAME}_${CI_BUILD_REF}'
+    expire_in: 1 day
+    paths:
+      - _public/
+  tags:
+    - node-14
+  script:
+    - yarn install
+    - yarn build:develop
+    - yarn build:storybook
+  stage: build
+  only:
+    - develop
+
+# build job: build project and upload artifacts for deploy
+build:
+  # It would upload artifacts to gitlab and next stage for deploy
+  artifacts:
+    name: '${CI_BUILD_REF_NAME}_${CI_BUILD_REF}'
+    expire_in: 1 day
+    paths:
+      - _public/
+  tags:
+    - node-14
+  script:
+    - yarn install
+    - yarn build
+  stage: build
+  only:
+    - master
+
+.deploy_template: &deploy_template
+  stage: deploy
+  tags:
+    - basic
+  artifacts:
+    expire_in: 2 days
+  retry: 2
+  before_script:
+    - |
+      echo "[INFO] ssh prep"
+      eval $(ssh-agent -s)
+      mkdir -p ~/.ssh
+      echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+      case $CI_COMMIT_REF_NAME in
+        develop)
+          _SSH_USER=$_DEV_SSH_USERNAME_FE
+          _SSH_HOST=$_DEV_SSH_HOST
+          _SSH_PATH=$_DEV_SSH_PATH_FE
+          _SSH_PEMFILE=$_DEV_SSH_PEMFILE_FE
+          ;;
+        stage)
+          _SSH_USER=$_STG_SSH_USERNAME_FE
+          _SSH_HOST=$_STG_SSH_HOST
+          _SSH_PATH=$_STG_SSH_PATH_FE
+          _SSH_PEMFILE=$_STG_SSH_PEMFILE_FE
+          ;;
+        master)
+          _SSH_USER=$_PROD_SSH_USERNAME_FE
+          _SSH_HOST=$_PROD_SSH_HOST
+          _SSH_PATH=$_PROD_SSH_PATH_FE
+          _SSH_PEMFILE=$_PROD_SSH_PEMFILE_FE
+          ;;
+        *)
+          echo "Branch not supported"
+          exit 1
+      esac
+      chmod 400 $_SSH_PEMFILE
+    - |
+      RSH() {
+        echo -ne '\e[1;34m==>\e[0m ' >&1
+        echo "ssh ${_SSH_USER}@${_SSH_HOST} $*" >&1
+        ssh -i ${_SSH_PEMFILE} ${_SSH_USER}@${_SSH_HOST} $@
+      }
+      RCP() {
+        scp -i ${_SSH_PEMFILE} $1 ${_SSH_USER}@${_SSH_HOST}:$2
+      }
+
+# deploy job
+deploy-develop:
+  <<: *deploy_template
+  script:
+    # You should add deploy script here
+    # 打包前端資料
+    - _pkg="$develop_${CI_PIPELINE_ID}"
+    # - mv .htaccess _public
+    - tar zcf ${_pkg}.tgz -C _public .
+    # 上傳打包資料到 server
+    - RCP ${_pkg}.tgz /tmp/
+    # 解壓縮打包的資料到 apache 資料夾
+    - RSH "mkdir -p /tmp/${_pkg}"
+    - |
+      echo "[INFO] deploy..."
+      RSH "tar zxf /tmp/${_pkg}.tgz -C /tmp/${_pkg}"
+      RSH "rsync -aq --delete /tmp/${_pkg}/ ${_SSH_PATH}"
+    # Clean up
+    - |
+      echo "[INFO] Clean up..."
+      RSH "rm -rf /tmp/${_pkg}*"
+  environment:
+    name: develop
+    url: https://DOMAIN.25demo.com
+  stage: deploy
+  only:
+    - develop
+
+# deploy job
+deploy-master:
+  <<: *deploy_template
+  script:
+    # You should add deploy script here
+    # 打包前端資料
+    - _pkg="$production_${CI_PIPELINE_ID}"
+    # - mv .htaccess _public
+    - tar zcf ${_pkg}.tgz -C _public .
+    # 上傳打包資料到 server
+    - RCP ${_pkg}.tgz /tmp/
+    # 解壓縮打包的資料到 apache 資料夾
+    - RSH "mkdir -p /tmp/${_pkg}"
+    - |
+      echo "[INFO] deploy..."
+      RSH "tar zxf /tmp/${_pkg}.tgz -C /tmp/${_pkg}"
+      RSH "rsync -aq --delete /tmp/${_pkg}/ ${_SSH_PATH}"
+    # Clean up
+    - |
+      echo "[INFO] Clean up..."
+      RSH "rm -rf /tmp/${_pkg}*"
+  environment:
+    name: master
+    url: https://DOMAIN/
+  stage: deploy
+  only:
+    - master
