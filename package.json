@@ -27,6 +27,7 @@
     "dev:production": "cross-env NODE_ENV=development PROXY=production API=dev babel-node server.js",
     "build:develop": "cross-env NODE_ENV=development API=develop webpack --config webpack.config.prod.babel.js",
     "build": "cross-env NODE_ENV=production API=production webpack --config webpack.config.prod.babel.js",
+    "build:page": "npm run build:develop && npm run build:storybook",
     "lint": "eslint . && stylelint .",
     "storybook": "start-storybook -p 8000 -c storybook",
     "prebuild:storybook": "npm run test:generate-output || true",
