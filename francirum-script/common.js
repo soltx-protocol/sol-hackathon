@@ -1,5 +1,6 @@
-import BN from 'bn.js'
-export function bnToNumber(bn: BN, decimals: number) {
+const  BN = require('bn.js');
+
+function bnToNumber(bn, decimals) {
 
     const decimalBN = new BN(decimals);
     const divisor = new BN(10).pow(decimalBN);
@@ -8,4 +9,8 @@ export function bnToNumber(bn: BN, decimals: number) {
     const afterDecimal = bn.mod(divisor);
 
     return Number(`${beforeDecimal}.${afterDecimal}`);
+}
+
+module.exports = {
+	bnToNumber
 }
