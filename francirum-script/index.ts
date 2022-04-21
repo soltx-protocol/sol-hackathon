@@ -13,9 +13,21 @@ const address = ''
 // getTokenPrice('SOL').then(res => console.log(res)).catch(e => alert(e))
 let positionId = 'SOL-USDC[Orca Aquafarm]'
 
-frUtils.getUserFarmPositionLeverageInfo(positionId, address).then(res => console.log(res)).catch(e => console.log(e))
+// frUtils.getUserFarmPositionLeverageInfo(positionId, address).then(res => console.log(res)).catch(e => console.log(e))
 
 /*getQuoteFromOrca('SOL').then(
   res => {console.log(res)}
 )*/
+const main = async () => {
+  try {
+    let farmPosition = await frUtils.UserFarmPosition.initialize(positionId, address);
+    console.log(farmPosition.getDebtUSD());
+    console.log(farmPosition.getEquityUSD());
+    console.log(farmPosition.getLeverage());
+  } catch(e) {
+    console.log(e);
+    throw e;
+  }
+}
 
+main()
