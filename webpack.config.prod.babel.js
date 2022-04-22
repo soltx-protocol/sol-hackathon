@@ -8,10 +8,11 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 
-import palette from './config/palette';
 import media from './config/media';
 import env from './config/env';
 import endpoint from './config/endpoint';
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 const terserDevOptions = {
 	terserOptions: {
@@ -64,8 +65,8 @@ const webpackProdConfig = {
 	},
 	output: {
 		path: path.join(__dirname, '_public'),
-		filename: '[name].[chunkhash].js',
-		chunkFilename: '[name].[chunkhash].chunk.js',
+		filename: 'static/js/[name].[chunkhash].js',
+		chunkFilename: 'static/js/[name].[chunkhash].chunk.js',
 		publicPath: '/',
 	},
 	plugins: [
@@ -74,19 +75,19 @@ const webpackProdConfig = {
 		}),
 
 		new HtmlWebpackPlugin({
-			template: './src/index.html',
+			template: './config/template',
 			minify: {
-				removeComments: true,
-				collapseWhitespace: true,
-				removeRedundantAttributes: true,
-				useShortDoctype: true,
-				removeEmptyAttributes: true,
-				removeStyleLinkTypeAttributes: true,
-				removeScriptTypeAttributes: true,
-				keepClosingSlash: true,
-				minifyJS: true,
-				minifyCSS: true,
-				minifyURLs: true,
+				removeComments: isProduction,
+				collapseWhitespace: isProduction,
+				removeRedundantAttributes: isProduction,
+				useShortDoctype: isProduction,
+				removeEmptyAttributes: isProduction,
+				removeStyleLinkTypeAttributes: isProduction,
+				removeScriptTypeAttributes: isProduction,
+				keepClosingSlash: isProduction,
+				minifyJS: isProduction,
+				minifyCSS: isProduction,
+				minifyURLs: isProduction,
 			},
 			inject: true,
 			showErrors: false,
@@ -97,18 +98,14 @@ const webpackProdConfig = {
 		new MiniCssExtractPlugin({
 			// Options similar to the same options in webpackOptions.output
 			// both options are optional
-			filename: '[name].[hash].css',
-			chunkFilename: '[id].[hash].css',
+			filename: 'static/css/[name].[hash].css',
+			chunkFilename: 'static/css/[id].[hash].css',
 		}),
 
 		new webpack.HashedModuleIdsPlugin(),
 	],
 	optimization: {
-		minimizer: [
-			new TerserPlugin(
-				process.env.NODE_ENV === 'production' ? terserProductionOptions : terserDevOptions,
-			),
-		],
+		minimizer: [new TerserPlugin(isProduction ? terserProductionOptions : terserDevOptions)],
 		// Automatically split vendor and commons
 		// https://hackernoon.com/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758
 		splitChunks: {
@@ -156,13 +153,13 @@ const webpackProdConfig = {
 			},
 			{
 				test: /\.css$/,
-				include: path.join(__dirname, 'src'),
+				include: [path.join(__dirname, 'src'), path.join(__dirname, 'config')],
 				use: [
 					MiniCssExtractPlugin.loader,
 					{
 						loader: 'css-loader',
 						options: {
-							sourceMap: process.env.NODE_ENV !== 'production',
+							sourceMap: !isProduction,
 							localsConvention: 'camelCase',
 							modules: {
 								localIdentName: '[name]__[local]___[hash:base64:5]',
@@ -173,15 +170,15 @@ const webpackProdConfig = {
 					{
 						loader: 'postcss-loader',
 						options: {
-							sourceMap: process.env.NODE_ENV !== 'production' ? 'inline' : false,
+							sourceMap: !isProduction ? 'inline' : false,
 							plugins: () => [
 								atImport(),
 								postcssPresetEnv({
 									stage: 0,
 									importFrom: [
+										'./config/palette.css',
 										{
 											customMedia: media,
-											customProperties: palette,
 										},
 									],
 									preserve: false,
@@ -199,7 +196,7 @@ const webpackProdConfig = {
 					{
 						loader: 'css-loader',
 						options: {
-							sourceMap: process.env.NODE_ENV !== 'production',
+							sourceMap: !isProduction,
 						},
 					},
 				],
@@ -210,7 +207,7 @@ const webpackProdConfig = {
 				loader: 'url-loader',
 				options: {
 					limit: 10000,
-					name: './assets/[name]__[hash].[ext]',
+					name: 'static/media/[name]__[hash].[ext]',
 				},
 			},
 			{
@@ -222,7 +219,7 @@ const webpackProdConfig = {
 						loader: 'url-loader',
 						options: {
 							limit: 10000,
-							name: './assets/[name]__[hash].[ext]',
+							name: 'static/media/[name]__[hash].[ext]',
 						},
 					},
 				],
@@ -248,7 +245,7 @@ const webpackProdConfig = {
 };
 
 // Minify and optimize the CSS
-if (process.env.NODE_ENV === 'production') {
+if (isProduction) {
 	webpackProdConfig.plugins.push(new OptimizeCSSAssetsPlugin({}));
 	webpackProdConfig.plugins.push(new CompressionPlugin({ test: /\.(js|css|html)$/ }));
 }

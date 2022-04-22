@@ -1,3 +1,172 @@
 /*
  * This is for global css usage.
  */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import '../config/palette.css';
+
+* {
+	font-family: Roboto, 'Noto Sans TC', PingFangTC-Regular, 'Microsoft JhengHei', sans-serif;
+	outline: none;
+	box-sizing: border-box;
+}
+
+body,
+input,
+select,
+textarea,
+button {
+	-webkit-font-smoothing: antialiased;
+	font-family: Roboto, 'Noto Sans TC', PingFangTC-Regular, 'Microsoft JhengHei', sans-serif;
+}
+
+html,
+body {
+	overflow-x: hidden;
+	position: relative;
+}
+
+/* For iOS 15 Safari bug */
+html:global(.no-scroll) {
+	height: 100vh;
+}
+
+body {
+	margin: 0;
+	overflow-x: hidden;
+	width: 100%;
+
+	&:global(.no-scroll) {
+		position: fixed;
+	}
+
+	& > :global(#content) {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+button {
+	margin: 0;
+	padding: 0;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+
+textarea,
+input {
+	appearance: none;
+	border-radius: 0;
+}
+
+/* Remove the div wrap image unknown padding */
+img {
+	display: block;
+}
+
+h1 {
+	font-size: 36px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.5;
+	letter-spacing: 4px;
+	color: var(--neutral-dark);
+	margin: 0;
+}
+
+h2 {
+	font-size: 32px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.25;
+	letter-spacing: 4px;
+	color: var(--neutral-dark);
+	margin: 0;
+}
+
+h3 {
+	font-size: 28px;
+	font-weight: 500;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.21;
+	letter-spacing: 2.5px;
+	color: var(--neutral-dark);
+	margin: 0;
+}
+
+h4 {
+	font-size: 24px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.17;
+	letter-spacing: 2.5px;
+	color: var(--neutral-dark);
+	margin: 0;
+}
+
+h5 {
+	font-size: 20px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.5;
+	letter-spacing: 2.5px;
+	color: var(--neutral-dark);
+	margin: 0;
+}
+
+p {
+	font-size: 14px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.71;
+	letter-spacing: 1.2px;
+	color: var(--neutral-dark);
+	margin: 0;
+}
+
+p:global(.large) {
+	font-size: 16px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 2;
+	letter-spacing: 1.2px;
+	color: var(--neutral-dark);
+}
+
+p:global(.small) {
+	font-size: 12px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.5;
+	letter-spacing: 0.8px;
+	color: var(--neutral-dark);
+}
+
+table {
+	border-radius: 4px;
+	background-color: var(--neutral-white);
+	border-collapse: collapse;
+}

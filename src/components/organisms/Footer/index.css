@@ -1,6 +1,6 @@
 .footer {
 	width: 100%;
-	color: var(--secondary);
-	background-color: var(--standard);
+	color: var(--primary-label);
+	background-color: var(--primary-default);
 	padding: 10px 0;
 }

@@ -1,3 +1,7 @@
 # Browsers that we support
 
-ie 11
+firefox >= 60
+edge >= 16
+chrome >= 65
+safari >= 12
+iOS >= 11

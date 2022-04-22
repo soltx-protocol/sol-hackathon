@@ -1,0 +1,26 @@
+:root {
+	/* primary */
+	--primary-active: #003789;
+	--primary-hover: #0047b2;
+	--primary-default: #06f;
+	--primary-disabled: #bed0eb;
+	--primary-light: #c2daff;
+	--primary-label: #eef5ff;
+	--primary-background: #f3f3f3;
+
+	/* Netural */
+	--neutral-black: #252525;
+	--neutral-dark: #505050;
+	--neutral-dark-grey: #7c7c7c;
+	--neutral-sec-grey: #a7a7a7;
+	--neutral-grey: #d3d3d3;
+	--neutral-light-grey: #e9e9e9;
+	--neutral-white-grey: #f1f1f1;
+	--neutral-background: #f6f6f6;
+	--neutral-white: #fff;
+
+	/* Functional */
+	--functional-error: #fb4a4a;
+	--functional-warning: #fdb531;
+	--functional-succesful: #23ca1f;
+}

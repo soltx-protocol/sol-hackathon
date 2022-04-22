@@ -5,7 +5,6 @@ import postcssPresetEnv from 'postcss-preset-env';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 
-import palette from './config/palette';
 import media from './config/media';
 import env from './config/env';
 import endpoint from './config/endpoint';
@@ -18,7 +17,7 @@ export default {
 	},
 	output: {
 		path: path.join(__dirname, '_public'),
-		filename: '[name].bundle.js',
+		filename: 'static/js/[name].bundle.js',
 		publicPath: '/',
 	},
 	plugins: [
@@ -112,9 +111,9 @@ export default {
 								postcssPresetEnv({
 									stage: 0,
 									importFrom: [
+										'./config/palette.css',
 										{
 											customMedia: media,
-											customProperties: palette,
 										},
 									],
 									preserve: false,
@@ -135,7 +134,7 @@ export default {
 				loader: 'url-loader',
 				options: {
 					limit: 10000,
-					name: './assets/[name]__[hash].[ext]',
+					name: 'static/media/[name]__[hash].[ext]',
 				},
 			},
 			{
@@ -147,7 +146,7 @@ export default {
 						loader: 'url-loader',
 						options: {
 							limit: 10000,
-							name: './assets/[name]__[hash].[ext]',
+							name: 'static/media/[name]__[hash].[ext]',
 						},
 					},
 				],
