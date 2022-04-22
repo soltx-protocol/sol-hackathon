@@ -5,8 +5,8 @@
 	width: 200px;
 	height: 200px;
 	border-radius: 100px;
-	color: var(--primary-label);
-	background-color: var(--primary-default);
+	color: var(--secondary-control);
+	background-color: var(--primary-cta);
 	margin: 0 auto;
 	margin-top: 200px;
 	margin-bottom: 200px;

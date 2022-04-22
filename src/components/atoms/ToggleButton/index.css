@@ -1,13 +1,13 @@
 .button {
-	background: var(--primary-default);
+	background: var(--primary-cta);
 	padding: 4px 10px;
 	border-radius: 5px;
 	border: none;
-	color: var(--primary-label);
+	color: var(--secondary-control);
 }
 
 .button-reverse {
 	composes: button;
-	background: var(--primary-label);
-	color: var(--primary-default);
+	background: var(--secondary-control);
+	color: var(--primary-cta);
 }

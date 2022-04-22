@@ -1,26 +1,87 @@
 :root {
 	/* primary */
-	--primary-active: #003789;
-	--primary-hover: #0047b2;
-	--primary-default: #06f;
-	--primary-disabled: #bed0eb;
-	--primary-light: #c2daff;
-	--primary-label: #eef5ff;
-	--primary-background: #f3f3f3;
+	--primary-cta-active: #1409a0;
+	--primary-cta-hover: #291ccb;
+	--primary-cta: #4c40e6;
+	--primary-cta-40: #8981ef;
+	--primary-cta-disabled: #c6c1ff;
+	--primary-cta-10: #ededfc;
 
-	/* Netural */
-	--neutral-black: #252525;
-	--neutral-dark: #505050;
-	--neutral-dark-grey: #7c7c7c;
-	--neutral-sec-grey: #a7a7a7;
-	--neutral-grey: #d3d3d3;
-	--neutral-light-grey: #e9e9e9;
-	--neutral-white-grey: #f1f1f1;
-	--neutral-background: #f6f6f6;
-	--neutral-white: #fff;
+	/* Secondary */
+	--secondary-control-action: #1e40af;
+	--secondary-control-hover: #1d4ed8;
+	--secondary-control: #2563eb;
+	--secondary-control-40: #60a5fa;
+	--secondary-control-disabled: #93c5fd;
+	--secondary-control-10: #dbeafe;
 
-	/* Functional */
-	--functional-error: #fb4a4a;
-	--functional-warning: #fdb531;
-	--functional-succesful: #23ca1f;
+	/* Text */
+	--text-100: #070707;
+	--text: #1c1f27;
+	--text-80: #303648;
+	--text-70: #454e68;
+	--text-secondary: #5a6689;
+	--text-50: #76809d;
+	--text-40: #9199b1;
+	--text-30: #adb3c4;
+	--text-20: #c8ccd8;
+	--text-10: #e4e6eb;
+
+	/* Netural Control Layer */
+	--neutral-control-layer-action: #070707;
+	--neutral-control-layer-hover: #1c1f27;
+	--neutral-control-layer-80: #303648;
+	--neutral-control-layer-70: #454e68;
+	--neutral-control-layer: #5a6689;
+	--neutral-control-layer-50: #76809d;
+	--neutral-control-layer-40: #9199b1;
+	--neutral-control-layer-30: #adb3c4;
+	--neutral-control-layer-disabled: #c8ccd8;
+	--neutral-control-layer-10: #e4e6eb;
+
+	/* Netural Control */
+	--neutral-control-100: #bdc1cf;
+	--neutral-control-90: #c7cad6;
+	--neutral-control-action: #d1d4dd;
+	--neutral-control-70: #dbdde5;
+	--neutral-control-hover: #e5e7ec;
+	--neutral-control: #eff0f3;
+	--neutral-control-40: #f2f3f5;
+	--neutral-control-30: #f5f6f8;
+	--neutral-control-disabled: #f9f9fa;
+	--neutral-control-10: #fcfcfd;
+
+	/* Divider */
+	--divider-90: #a7aeb8;
+	--divider-80: #b5bbc4;
+	--divider-60: #c3c8cf;
+	--divider: #d1d5db;
+	--divider-20: #e1e3e7;
+	--divider-10: #f0f1f3;
+
+	/* System */
+	--system-green-90: #002611;
+	--system-green-80: #00401c;
+	--system-green: #00632b;
+	--system-green-40: #419e6a;
+	--system-green-20: #a5e1bf;
+	--system-green-10: #e8fcf1;
+	--system-blue-90: #002987;
+	--system-blue-80: #0037b3;
+	--system-blue: #2563eb;
+	--system-blue-40: #4d82f3;
+	--system-blue-20: #7ea5f8;
+	--system-blue-10: #d3e1fe;
+	--system-yellow-90: #4d2900;
+	--system-yellow-80: #724b00;
+	--system-yellow-60: #976400;
+	--system-yellow: #efb008;
+	--system-yellow-20: #ffde81;
+	--system-yellow-10: #fff5d5;
+	--system-red-90: #600;
+	--system-red-80: #8c0000;
+	--system-red: #b01212;
+	--system-red-40: #d83232;
+	--system-red-20: #fc9595;
+	--system-red-10: #ffebeb;
 }

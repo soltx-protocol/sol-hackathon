@@ -86,7 +86,7 @@ h1 {
 	font-style: normal;
 	line-height: 1.5;
 	letter-spacing: 4px;
-	color: var(--neutral-dark);
+	color: var(--text);
 	margin: 0;
 }
 
@@ -97,7 +97,7 @@ h2 {
 	font-style: normal;
 	line-height: 1.25;
 	letter-spacing: 4px;
-	color: var(--neutral-dark);
+	color: var(--text);
 	margin: 0;
 }
 
@@ -108,7 +108,7 @@ h3 {
 	font-style: normal;
 	line-height: 1.21;
 	letter-spacing: 2.5px;
-	color: var(--neutral-dark);
+	color: var(--text);
 	margin: 0;
 }
 
@@ -119,7 +119,7 @@ h4 {
 	font-style: normal;
 	line-height: 1.17;
 	letter-spacing: 2.5px;
-	color: var(--neutral-dark);
+	color: var(--text);
 	margin: 0;
 }
 
@@ -130,7 +130,7 @@ h5 {
 	font-style: normal;
 	line-height: 1.5;
 	letter-spacing: 2.5px;
-	color: var(--neutral-dark);
+	color: var(--text);
 	margin: 0;
 }
 
@@ -141,7 +141,7 @@ p {
 	font-style: normal;
 	line-height: 1.71;
 	letter-spacing: 1.2px;
-	color: var(--neutral-dark);
+	color: var(--text);
 	margin: 0;
 }
 
@@ -152,7 +152,7 @@ p:global(.large) {
 	font-style: normal;
 	line-height: 2;
 	letter-spacing: 1.2px;
-	color: var(--neutral-dark);
+	color: var(--text);
 }
 
 p:global(.small) {
@@ -162,7 +162,7 @@ p:global(.small) {
 	font-style: normal;
 	line-height: 1.5;
 	letter-spacing: 0.8px;
-	color: var(--neutral-dark);
+	color: var(--text);
 }
 
 table {
