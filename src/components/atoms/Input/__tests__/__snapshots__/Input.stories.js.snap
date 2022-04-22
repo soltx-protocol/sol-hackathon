@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `
+<DocumentFragment>
+  <div
+    class="input"
+  >
+    <input
+      placeholder="請輸入"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`with search input 1`] = `
+<DocumentFragment>
+  <div
+    class="input icon isLeftIcon"
+  >
+    <input
+      placeholder="請輸入"
+      type="text"
+    />
+    <button
+      class="icon"
+      type="button"
+    >
+      <test-file-stub />
+    </button>
+  </div>
+</DocumentFragment>
+`;
