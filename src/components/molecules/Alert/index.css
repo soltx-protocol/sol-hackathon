@@ -33,3 +33,10 @@
 		}
 	}
 }
+
+.modal {
+	width: 100vw;
+	padding: 20px 0;
+	height: auto;
+	top: 120px;
+}
