@@ -1,24 +1,24 @@
 {
   "name": "sol-hackathon",
-  "description": "25sprout web starter with React",
+  "description": "soltx web starter with React",
   "version": "0.1.0",
   "keywords": [
     "react",
-    "25sprout",
+    "soltx",
     "starter"
   ],
   "contributor": [
     {
-      "name": "25sprout Front-End Team",
-      "email": "hey@25sprout.com"
+      "name": "soltx Front-End Team",
+      "email": "hey@soltx.com"
     }
   ],
   "repository": {
     "type": "url",
-    "url": "https://fox.25sprout.com/frontend/react-starter"
+    "url": "https://github.com/soltx-protocol/sol-hackathon"
   },
   "bugs": {
-    "url": "https://fox.25sprout.com/frontend/react-starter/issues"
+    "url": "https://github.com/soltx-protocol/sol-hackathon/issues"
   },
   "license": "MIT",
   "scripts": {

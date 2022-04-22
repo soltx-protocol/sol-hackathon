@@ -18,7 +18,7 @@ const { SELF_HOST_ENDPOINT } = process.env;
 
 const customTheme = create({
 	base: 'dark',
-	brandTitle: '25sprout react starter',
+	brandTitle: 'soltx react starter',
 	brandUrl: SELF_HOST_ENDPOINT,
 });
 
