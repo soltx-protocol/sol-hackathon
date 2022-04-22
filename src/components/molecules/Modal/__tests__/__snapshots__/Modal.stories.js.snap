@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `<DocumentFragment />`;
+
+exports[`with inline 1`] = `
+<DocumentFragment>
+  <div
+    class="modal inline"
+    role="presentation"
+  >
+    <div
+      style="background-color: black; width: 100px; height: 50px; color: white;"
+    >
+      測試
+    </div>
+  </div>
+</DocumentFragment>
+`;

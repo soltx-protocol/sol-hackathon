@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `
+<DocumentFragment>
+  <div
+    style="padding: 20px;"
+  >
+    <div
+      class="alert"
+    >
+      <test-file-stub />
+      <div
+        class="content"
+      >
+        <div
+          class="title"
+        >
+          Success
+        </div>
+        <span>
+          Your order has been filled
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

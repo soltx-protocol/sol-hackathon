@@ -1,13 +1,11 @@
 import { combineReducers } from 'redux';
 
 import routing from './routing';
-import members from './member';
-import blogs from './blog';
+import alert from './alert';
 
 const reducers = combineReducers({
 	...routing.reducer,
-	...members.reducer,
-	...blogs.reducer,
+	...alert.reducer,
 });
 
 export default reducers;
