@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `
+<DocumentFragment>
+  <button
+    class="button"
+    type="button"
+  >
+    <div>
+      瞭解更多
+    </div>
+  </button>
+</DocumentFragment>
+`;
