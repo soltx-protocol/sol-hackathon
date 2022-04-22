@@ -1,0 +1,53 @@
+.navbar {
+	width: 240px;
+	height: 100vh;
+	padding: 18px;
+	background-color: var(--neutral-white);
+	border-right: 1px solid var(--divider-20);
+
+	& > .icon {
+		padding: 6px 10px;
+		margin-bottom: 18px;
+	}
+
+	& > button {
+		display: flex;
+		height: 42px;
+		width: 100%;
+		border-radius: 8px;
+		margin-bottom: 4px;
+		background-color: var(--neutral-white);
+		transition: background-color 0.3s ease-out;
+
+		& > div {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			padding: 0 13px;
+			width: 100%;
+			height: 100%;
+			font-style: normal;
+			font-weight: 600;
+			font-size: 16px;
+			line-height: 24px;
+			color: var(--neutral-control-layer);
+			transition: color 0.3s ease-out;
+
+			& > svg {
+				margin-right: 18px;
+			}
+		}
+
+		&:hover {
+			background-color: #ededfc;
+		}
+
+		&.active {
+			background-color: #ededfc;
+
+			& > div {
+				color: #291ccb;
+			}
+		}
+	}
+}

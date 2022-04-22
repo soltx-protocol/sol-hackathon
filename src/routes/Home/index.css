@@ -1,16 +1,8 @@
-.welcome {
+.home {
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 200px;
-	height: 200px;
-	border-radius: 100px;
-	color: var(--secondary-control);
-	background-color: var(--primary-cta);
-	margin: 0 auto;
-	margin-top: 200px;
-	margin-bottom: 200px;
-	line-height: 32px;
-	font-weight: 300;
-	text-align: center;
+	flex-wrap: wrap;
+	width: 100%;
+	padding: 24px;
+	gap: 12px;
+	height: fit-content;
 }
