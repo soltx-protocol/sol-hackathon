@@ -75,7 +75,7 @@ const webpackProdConfig = {
 		}),
 
 		new HtmlWebpackPlugin({
-			template: './config/template',
+			template: './src/index.html',
 			minify: {
 				removeComments: isProduction,
 				collapseWhitespace: isProduction,
