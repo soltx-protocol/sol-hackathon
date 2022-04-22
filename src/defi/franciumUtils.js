@@ -1,20 +1,20 @@
-import { Connection, PublicKey } from '@solana/web3.js';
+import { Connection } from '@solana/web3.js';
 import FranciumSDK, { TOKENS_LIST } from 'francium-sdk';
 import { bnToNumber } from './common';
 
 const fr = new FranciumSDK({
-	connection: new Connection('https://free.rpcpool.com'),
+	connection: new Connection('https://ssc-dao.genesysgo.net/'),
 });
 
 async function getTokenPrice(tokenSymbol) {
 	const result = await fr.getTokenPriceInfo();
 	const tokenPriceDict = result.tokenPrice;
-	for (const key in tokenPriceDict) {
-		if (key == tokenSymbol) {
-			return tokenPriceDict[key];
-		}
+
+	if (Object.keys(tokenPriceDict).includes(tokenSymbol)) {
+		return tokenPriceDict[tokenSymbol];
 	}
-	throw `Token ${tokenSymbol} not found`;
+
+	throw new Error(`Token ${tokenSymbol} not found`);
 }
 
 /*
@@ -37,12 +37,12 @@ async function getTokenPrice(tokenSymbol) {
 
 async function getLPInfo(lpId) {
 	const farmLPDict = await fr.getFarmLPPriceInfo();
-	for (const farmLpId in farmLPDict) {
-		if (farmLpId == lpId) {
-			return farmLPDict[farmLpId];
-		}
+
+	if (Object.keys(farmLPDict).includes(lpId)) {
+		return farmLPDict[lpId];
 	}
-	throw `LP ${lpId} not found`;
+
+	throw new Error(`LP ${lpId} not found`);
 }
 
 /*
@@ -63,50 +63,14 @@ async function getLPInfo(lpId) {
 */
 async function getUserFarmPositionById(id, address) {
 	const farmPositionList = await fr.getUserFarmPosition(address);
-	for (const index in farmPositionList) {
-		if (id == farmPositionList[index].id) {
-			return farmPositionList[index];
-		}
-	}
-	throw `Position ${id} not found`;
-}
 
-async function getUserFarmPositionLeverageInfo(id, address) {
-	const farmPosition = await getUserFarmPositionById(id, address);
-	const { lpAmount } = farmPosition;
-	const borrowedInfoList = farmPosition.borrowed;
+	const position = farmPositionList.filter(item => item.id === id);
 
-	let totalDebtUSD = 0;
-	for (const borrowedInfo of borrowedInfoList) {
-		const tokenSymbol = borrowedInfo.symbol;
-		const tokenAmount = borrowedInfo.amount;
-		const tokenInfo = TOKENS_LIST[tokenSymbol];
-		const tokenDecimals = tokenInfo.decimals;
-		const tokenPrice = await getTokenPrice(tokenSymbol);
-		console.log(`${tokenPrice} ${tokenAmount} ${tokenDecimals}`);
-
-		// TODO find method to handle decimal in bn.js
-		const d = 10 ** (tokenDecimals - 2);
-		const debtUSD = (tokenPrice * tokenAmount.divn(d).toNumber()) / 10 ** 2;
-		totalDebtUSD += debtUSD;
-		console.log(`${tokenSymbol} debt ${debtUSD}`);
+	if (position.length > 0) {
+		return position[0];
 	}
 
-	// TODO find by ID ?
-	const lpId = id.replace('[Orca Aquafarm]', '');
-	const lpInfo = await getLPInfo(lpId);
-	const { lpDecimals } = lpInfo;
-	const lpPrice = lpInfo.price;
-	// TODO Use price AMM ?
-	const equityUSD = (lpAmount.idivn(10 ** (lpDecimals - 2)).toNumber() * lpPrice) / 100;
-	console.log(equityUSD);
-	const result = {
-		debtUSD: totalDebtUSD,
-		equityUSD,
-		leverage: equityUSD / (equityUSD - totalDebtUSD),
-	};
-
-	return result;
+	throw new Error(`Position ${id} not found`);
 }
 
 export class UserFarmPosition {
@@ -137,28 +101,30 @@ export class UserFarmPosition {
 	}
 
 	getTokenPrice(tokenSymbol) {
-		if (tokenSymbol == this.farmPoolInfo.pcToken) {
+		if (tokenSymbol === this.farmPoolInfo.pcToken) {
 			return this.pcTokenPrice;
 		}
-		if (tokenSymbol == this.farmPoolInfo.coinToken) {
+		if (tokenSymbol === this.farmPoolInfo.coinToken) {
 			return this.coinTokenPrice;
 		}
-		throw `Token price ${tokenSymbol} not found`;
+		throw new Error(`Token price ${tokenSymbol} not found`);
 	}
 
 	getDebtUSD() {
-		let totalDebtUSD = 0;
 		const borrowedInfoList = this.farmPositionInfo.borrowed;
-		for (const borrowedInfo of borrowedInfoList) {
+
+		const totalDebtUSD = borrowedInfoList.reduce((prevTotal, borrowedInfo) => {
 			const tokenSymbol = borrowedInfo.symbol;
 			const tokenAmount = borrowedInfo.amount;
 			const tokenInfo = TOKENS_LIST[tokenSymbol];
 			const tokenDecimals = tokenInfo.decimals;
 			const tokenPrice = this.getTokenPrice(tokenSymbol);
 			const debtUSD = tokenPrice * bnToNumber(tokenAmount, tokenDecimals);
-			totalDebtUSD += debtUSD;
-			console.debug(`${tokenSymbol} debt ${debtUSD}`);
-		}
+			console.info(`${tokenSymbol} debt ${debtUSD}`);
+
+			return prevTotal + debtUSD;
+		}, 0);
+
 		return totalDebtUSD;
 	}
 

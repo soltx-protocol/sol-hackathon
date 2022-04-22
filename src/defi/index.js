@@ -25,7 +25,7 @@ import { UserFarmPosition } from './franciumUtils.js';
 
 const run = async () => {
 	const address = '';
-	const positionId = 'SHDW-USDC[Orca Double-Dip]';
+	const positionId = 'SOL-USDC[Orca Aquafarm]';
 
 	try {
 		const farmPosition = await UserFarmPosition.initialize(positionId, address);

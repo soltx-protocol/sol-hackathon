@@ -1,8 +1,3 @@
-// import { Connection, PublicKey } from '@solana/web3.js';
-// import FranciumSDK from 'francium-sdk';
-// import { getQuoteFromOrca } from './orca';
-// import * as frUtils from './franciumUtils';
-
 const { UserFarmPosition } = require('./franciumUtils.js');
 
 const address = '';
@@ -11,16 +6,16 @@ const address = '';
 
 //  fr.getTokenPriceInfo().then(res => console.log(res))
 // getTokenPrice('SOL').then(res => console.log(res)).catch(e => alert(e))
-let positionId = 'SOL-USDC[Orca Aquafarm]';
+const positionId = 'SOL-USDC[Orca Aquafarm]';
 
 // frUtils.getUserFarmPositionLeverageInfo(positionId, address).then(res => console.log(res)).catch(e => console.log(e))
 
-/*getQuoteFromOrca('SOL').then(
+/* getQuoteFromOrca('SOL').then(
   res => {console.log(res)}
-)*/
+) */
 const main = async () => {
 	try {
-		let farmPosition = await UserFarmPosition.initialize(positionId, address);
+		const farmPosition = await UserFarmPosition.initialize(positionId, address);
 		console.log(farmPosition.getDebtUSD());
 		console.log(farmPosition.getEquityUSD());
 		console.log(farmPosition.getLeverage());
