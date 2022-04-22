@@ -4,7 +4,7 @@ import { boolean } from '@storybook/addon-knobs/react';
 
 import Input, { InputSearch } from 'components/atoms/Input';
 
-const stories = storiesOf('atoms/Input', module);
+const stories = storiesOf('COMMON|atoms/Input', module);
 
 stories.add('__interactive', () => (
 	<Input

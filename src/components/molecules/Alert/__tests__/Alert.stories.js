@@ -6,7 +6,7 @@ import { AlertComponent } from 'components/molecules/Alert';
 
 import { ALERT_TYPE } from 'models/alert';
 
-const stories = storiesOf('molecules/Alert', module);
+const stories = storiesOf('COMMON|molecules/Alert', module);
 
 stories.add('__interactive', () => (
 	<div style={{ padding: '20px' }}>

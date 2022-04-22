@@ -4,7 +4,7 @@ import { boolean } from '@storybook/addon-knobs/react';
 
 import Modal, { InlineModal } from 'components/molecules/Modal';
 
-const stories = storiesOf('molecules/Modal', module);
+const stories = storiesOf('COMMON|molecules/Modal', module);
 
 stories.add('__interactive', () => (
 	<Modal active={boolean('active', true)}>

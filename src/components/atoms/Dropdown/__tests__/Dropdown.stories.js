@@ -10,7 +10,7 @@ const options = [
 	{ value: 'blue', label: '藍色' },
 ];
 
-const stories = storiesOf('Common|atoms/Dropdown', module);
+const stories = storiesOf('COMMON|atoms/Dropdown', module);
 
 stories.addDecorator(withKnobs);
 

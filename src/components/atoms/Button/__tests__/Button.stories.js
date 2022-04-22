@@ -6,7 +6,7 @@ import Button, { BUTTON_SIZE_TYPE } from 'components/atoms/Button';
 
 import MailIcon from 'images/icon/mail.inline.svg';
 
-const stories = storiesOf('atoms/Button', module);
+const stories = storiesOf('COMMON|atoms/Button', module);
 
 stories.add('__interactive', () => (
 	<Button
