@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `
+<DocumentFragment>
+  <div
+    class="dropdownBasic"
+  >
+    <div
+      class="content value hasValue"
+      role="button"
+      tabindex="0"
+    >
+      <div>
+        黑色
+      </div>
+      <test-file-stub />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`with placeholder 1`] = `
+<DocumentFragment>
+  <div
+    class="dropdownBasic"
+  >
+    <div
+      class="content value"
+      role="button"
+      tabindex="0"
+    >
+      <div>
+        請選擇顏色
+      </div>
+      <test-file-stub />
+    </div>
+  </div>
+</DocumentFragment>
+`;

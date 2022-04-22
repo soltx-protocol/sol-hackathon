@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `
+<DocumentFragment>
+  <div
+    class="dropdownBasic"
+  >
+    <div
+      class="content"
+      role="button"
+      tabindex="0"
+    >
+      Hi
+    </div>
+  </div>
+</DocumentFragment>
+`;

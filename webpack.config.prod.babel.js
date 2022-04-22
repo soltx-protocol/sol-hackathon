@@ -153,7 +153,7 @@ const webpackProdConfig = {
 			},
 			{
 				test: /\.css$/,
-				include: [path.join(__dirname, 'src'), path.join(__dirname, 'config')],
+				include: [path.join(__dirname, 'src'), path.join(__dirname, 'storybook')],
 				use: [
 					MiniCssExtractPlugin.loader,
 					{

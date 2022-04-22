@@ -5,6 +5,7 @@ import { withTests } from '@storybook/addon-jest';
 
 import 'normalize.css';
 import '../src/global.css';
+import './storybook.css';
 
 import { withRedux } from '../src/util/storybook-redux/decorator';
 

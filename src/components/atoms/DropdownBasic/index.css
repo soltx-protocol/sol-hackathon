@@ -1,0 +1,32 @@
+.dropdown-basic {
+	position: relative;
+
+	& > .content {
+		width: 100%;
+		min-height: 48px;
+		border: solid 1px var(--divider-20);
+		border-radius: 6px;
+		cursor: pointer;
+		outline: none;
+	}
+
+	& > .menu {
+		position: absolute;
+		left: 0;
+		top: 100%;
+		width: 100%;
+		z-index: 5;
+		border: solid 1px var(--divider-20);
+		border-radius: 6px;
+		padding: 8px;
+		outline: none;
+	}
+
+	&.dropdown > .content {
+		border-bottom: none;
+	}
+
+	&.disabled > .content {
+		cursor: not-allowed;
+	}
+}
