@@ -1,7 +1,5 @@
 import React from 'react';
 
-import run from 'defi';
-
 import MembersRoute from './Members';
 import BlogsRoute from './Blogs';
 
@@ -13,8 +11,6 @@ const routes = {
 		console.log('on Enter Root');
 		const children = await next();
 		console.log('on Enter Root / end');
-
-		run();
 
 		return children;
 	},
