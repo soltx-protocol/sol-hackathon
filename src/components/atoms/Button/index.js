@@ -23,6 +23,7 @@ const Button = ({
 	active = false,
 	onClick = () => {},
 	Icon,
+	iconRight = false,
 	size = BUTTON_SIZE_TYPE.MEDIUM,
 	...other
 }) => (
@@ -45,8 +46,9 @@ const Button = ({
 		{...other}
 	>
 		<div>
+			{Icon && !iconRight && <Icon className={classnames(styles.icon)} />}
 			{children}
-			{Icon && <Icon className={styles.icon} />}
+			{Icon && iconRight && <Icon className={classnames(styles.icon, styles.right)} />}
 		</div>
 	</button>
 );

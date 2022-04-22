@@ -12,3 +12,19 @@ exports[`__interactive 1`] = `
   </button>
 </DocumentFragment>
 `;
+
+exports[`with Icon 1`] = `
+<DocumentFragment>
+  <button
+    class="button icon"
+    type="button"
+  >
+    <div>
+      <test-file-stub
+        classname="icon"
+      />
+      瞭解更多
+    </div>
+  </button>
+</DocumentFragment>
+`;
