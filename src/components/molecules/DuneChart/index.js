@@ -3,6 +3,41 @@ import classnames from 'classnames';
 
 import styles from './index.css';
 
+export const DuneDailyActiveWallet = ({ className }) => (
+	<iframe
+		className={classnames(styles.duneChart, className)}
+		src="https://dune.com/embeds/632045/1177839/e923fa08-4827-4c63-855e-3a9cb7a23068"
+		title="Daily Active Wallet"
+	/>
+);
+
+export const DuneAverageTradingVolumeInFeb2022 = ({ className }) => (
+	<iframe
+		className={classnames(styles.duneChart, className)}
+		src="https://dune.com/embeds/631445/1176822/c5c63622-5d96-492e-8e32-de89367e9d9e"
+		title="The Average Trading Volume in Feb 2022"
+	/>
+);
+
+export const DuneAverageDailyTradingVolumeByPool = ({
+	className,
+	account = '87E4KtN7F4LivKhjqXaoQAvS3a8HnM4DnMUrbMrkVvXY',
+}) => (
+	<iframe
+		className={classnames(styles.duneChart, className)}
+		src={`https://dune.com/embeds/631945/1177675/76ed0b61-fe55-4257-99cb-6ce78fac78cb?account=${account}`}
+		title="The Average Daily Trading Volume By Pool"
+	/>
+);
+
+export const DuneFirstTrade = ({ className }) => (
+	<iframe
+		className={classnames(styles.duneChart, className)}
+		src="https://dune.com/embeds/630624/1177678/754051da-28d0-4521-bac5-6cefd39a5d78"
+		title="The First Trade Information"
+	/>
+);
+
 export const DuneDailyFeeByPool = ({
 	className,
 	feeAccount = 'DLWewB12jzGn4wXJmFCddWDeof1Ma4cZYNRv9CP5hTvX',
@@ -11,7 +46,7 @@ export const DuneDailyFeeByPool = ({
 	<iframe
 		className={classnames(styles.duneChart, className)}
 		src={`https://dune.com/embeds/630914/1176681/3d573057-a39b-4bdf-9f63-abf84db2dd9f?feeAccount=${feeAccount}&poolTokenMint=${poolTokenMint}`}
-		title="Top 5 Traders"
+		title="Daily Pool Fee(LP)"
 	/>
 );
 

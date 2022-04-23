@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import { hot } from 'react-hot-loader/root';
 
 import Search from 'components/molecules/Search';
-import { DuneDailyFeeByPool, DuneTop5Traders } from 'components/molecules/DuneChart';
+import {
+	DuneAverageDailyTradingVolumeByPool,
+	DuneAverageTradingVolumeInFeb2022,
+	DuneDailyActiveWallet,
+	DuneDailyFeeByPool,
+	DuneFirstTrade,
+	DuneTop5Traders,
+} from 'components/molecules/DuneChart';
 
 import ControlBar from 'components/molecules/ControlBar';
 import styles from './index.css';
@@ -26,10 +33,14 @@ const Home = () => {
 			<div className={styles.content}>
 				{pool === null ? (
 					<>
+						<DuneDailyActiveWallet />
+						<DuneAverageTradingVolumeInFeb2022 />
+						<DuneFirstTrade />
 						<DuneTop5Traders />
 					</>
 				) : (
 					<>
+						<DuneAverageDailyTradingVolumeByPool account={pool?.account} />
 						<DuneDailyFeeByPool poolTokenMint={pool?.poolTokenMint} feeAccount={pool?.feeAccount} />
 					</>
 				)}
