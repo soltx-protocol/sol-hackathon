@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { hot } from 'react-hot-loader/root';
 
 import Search from 'components/molecules/Search';
-import { DuneDailyFeeByPool, DuneTop5Traders } from 'components/molecules/DuneTxPool';
+import { DuneDailyFeeByPool, DuneTop5Traders } from 'components/molecules/DuneChart';
 
 import ControlBar from 'components/molecules/ControlBar';
 import styles from './index.css';

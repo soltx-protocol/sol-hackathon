@@ -1,4 +1,4 @@
-import DuneTxPool from 'components/molecules/DuneTxPool';
+import DuneChart from 'components/molecules/DuneChart';
 import { useAccount } from 'models/account';
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
@@ -11,9 +11,9 @@ const Account = () => {
 	return (
 		<div className={styles.account}>
 			<div className={styles.content}>
-				<DuneTxPool />
-				<DuneTxPool poolAccount={account} />
-				<DuneTxPool poolAccount={account} />
+				<DuneChart />
+				<DuneChart poolAccount={account} />
+				<DuneChart poolAccount={account} />
 			</div>
 		</div>
 	);
