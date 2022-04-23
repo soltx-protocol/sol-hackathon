@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `
+<DocumentFragment>
+  <div
+    class="search"
+  >
+    <div
+      class="title"
+    >
+      Pool Search
+    </div>
+    <div
+      class="input icon isLeftIcon"
+    >
+      <input
+        type="text"
+      />
+      <button
+        class="icon"
+        type="button"
+      >
+        <test-file-stub />
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

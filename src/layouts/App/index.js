@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 
 // import Header from 'components/organisms/Header';
 // import Footer from 'components/organisms/Footer';
@@ -14,7 +15,7 @@ const App = ({ children }) => {
 	const atAccountPage = history.location.pathname.includes('account');
 
 	return (
-		<div className={styles.app}>
+		<div className={classnames(styles.app, { [styles.atAccount]: atAccountPage })}>
 			<Navbar select={atAccountPage ? NAV_SELECT.ACCOUNT : NAV_SELECT.OVERALL} />
 			{children}
 			{/* <Footer /> */}

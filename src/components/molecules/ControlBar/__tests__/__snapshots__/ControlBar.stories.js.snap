@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`__interactive 1`] = `
+<DocumentFragment>
+  <div
+    class="controlBar"
+  >
+    <div
+      class="king"
+    >
+      <test-file-stub />
+      <div
+        class="description"
+      >
+        Top Asset Owner
+Today
+      </div>
+    </div>
+    <div
+      class="wallet"
+    >
+      <div
+        class="input input"
+      >
+        <input
+          placeholder="Insert wallet address"
+        />
+      </div>
+      <button
+        class="button"
+        type="button"
+      >
+        <div>
+          Generate
+        </div>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,33 @@
+.control-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 90px;
+	background: rgb(68 72 131 / 60%);
+	padding: 0 36px;
+
+	& > .king {
+		display: flex;
+		align-items: center;
+
+		& > .description {
+			font-style: normal;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 20px;
+			margin-left: 10px;
+			white-space: pre-line;
+			color: #f8f8ff;
+		}
+	}
+
+	& > .wallet {
+		display: flex;
+		align-items: center;
+
+		& > .input {
+			width: 500px;
+			margin-right: 20px;
+		}
+	}
+}
