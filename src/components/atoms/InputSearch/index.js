@@ -36,6 +36,8 @@ const InputSearch = ({
 	options = [],
 	initialValue = [],
 	value: propsValue,
+	onSearch = () => {},
+	onClear = () => {},
 	onChange = () => {},
 	...other
 }) => {
@@ -50,7 +52,7 @@ const InputSearch = ({
 
 	const filterOptions =
 		value.length > 0
-			? options.filter(item => item.value.includes(value[0].value.toLowerCase()))
+			? options.filter(item => item.value.toLowerCase().includes(value[0].value.toLowerCase()))
 			: options;
 
 	const onBlur = ({ relatedTarget }) => {
@@ -60,7 +62,17 @@ const InputSearch = ({
 			refValue.current !== relatedTarget
 		) {
 			closePanel();
+
+			if (value.length === 0 || value[0].value === '') {
+				onClear();
+			}
 		}
+	};
+
+	const onClickChange = option => {
+		onChangeValue(option);
+		closePanel();
+		onSearch(option);
 	};
 
 	return (
@@ -80,6 +92,7 @@ const InputSearch = ({
 			>
 				<Input
 					{...other}
+					className={styles.input}
 					type="text"
 					Icon={SearchIcon}
 					isLeftIcon
@@ -103,8 +116,7 @@ const InputSearch = ({
 								[styles.isSelected]: value.length > 0 && option.value === value[0].value,
 							})}
 							onClick={() => {
-								onChangeValue(option);
-								closePanel();
+								onClickChange(option);
 							}}
 							role="presentation"
 						>

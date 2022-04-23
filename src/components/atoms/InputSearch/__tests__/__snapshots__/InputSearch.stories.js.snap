@@ -11,7 +11,7 @@ exports[`__interactive 1`] = `
       tabindex="0"
     >
       <div
-        class="input icon isLeftIcon"
+        class="input input icon isLeftIcon"
       >
         <input
           type="text"
