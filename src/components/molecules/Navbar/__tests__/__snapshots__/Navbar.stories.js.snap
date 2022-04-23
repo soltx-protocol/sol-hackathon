@@ -29,7 +29,7 @@ exports[`__interactive 1`] = `
     >
       <div>
         <test-file-stub />
-         Individual Wallet
+         Individual Account
       </div>
     </button>
     <div

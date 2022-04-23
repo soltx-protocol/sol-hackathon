@@ -1,0 +1,12 @@
+.account {
+	display: flex;
+
+	& > .content {
+		display: flex;
+		flex-wrap: wrap;
+		height: fit-content;
+		gap: 24px 26px;
+		width: 100%;
+		margin: 0 36px;
+	}
+}

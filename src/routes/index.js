@@ -1,7 +1,7 @@
 import React from 'react';
 
-import MembersRoute from './Members';
-import BlogsRoute from './Blogs';
+// import { getOrcaPool } from 'defi/orca';
+import AccountRoute from './Account';
 
 const routes = {
 	path: '/',
@@ -11,6 +11,8 @@ const routes = {
 		console.log('on Enter Root');
 		const children = await next();
 		console.log('on Enter Root / end');
+
+		// getOrcaPool('9dhoieCDdX3qawKK283vtcLmKHnvnMm3VQTKybyBcSdd');
 
 		return children;
 	},
@@ -26,8 +28,7 @@ const routes = {
 				return children;
 			},
 		},
-		MembersRoute,
-		BlogsRoute,
+		AccountRoute,
 	],
 };
 

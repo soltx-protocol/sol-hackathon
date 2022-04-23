@@ -34,11 +34,17 @@ export const getOrcaPool = async address => {
 	const connection = new Connection(mainnetURL, commitment);
 	const orca = getOrca(connection);
 
-	const orcaSolFarm = orca.getFarm(OrcaFarmConfig.POLIS_USDC_DD);
+	const orcaSolFarm = orca.getFarm(OrcaFarmConfig.SOL_USDC_AQ);
 
-	const getFarmBalance = await orcaSolFarm.getFarmBalance(publicKey);
+	const farmBalance = await orcaSolFarm.getFarmBalance(publicKey);
 
-	console.log(getFarmBalance.toNumber());
+	console.log(farmBalance.toNumber());
 
-	return getFarmBalance;
+	const orcaSolPool = orca.getPool(OrcaPoolConfig.SOL_USDC);
+
+	const lpBalance = await orcaSolPool.getLPBalance(publicKey);
+
+	console.log(lpBalance.toNumber());
+
+	return farmBalance;
 };
