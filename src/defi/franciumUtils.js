@@ -6,6 +6,18 @@ const fr = new FranciumSDK({
 	connection: new Connection('https://ssc-dao.genesysgo.net/'),
 });
 
+// export const getOrcaPool = async address => {
+// 	const publicKey = new PublicKey(address);
+// 	// const result = await fr.getUserFarmPosition(publicKey);
+
+// 	const result = await fr.farmHub.getUserPositionsByProgram('orca', publicKey);
+// 	// const result = await fr.farmHub.getUserPositionsAll(publicKey);
+
+// 	console.log(result);
+
+// 	return result;
+// };
+
 async function getTokenPrice(tokenSymbol) {
 	const result = await fr.getTokenPriceInfo();
 	const tokenPriceDict = result.tokenPrice;

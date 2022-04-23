@@ -1,12 +1,9 @@
-import { Connection } from '@solana/web3.js';
-import { getOrca, OrcaPoolConfig } from '@orca-so/sdk';
+import { Connection, PublicKey } from '@solana/web3.js';
+import { getOrca, OrcaFarmConfig, OrcaPoolConfig } from '@orca-so/sdk';
 import Decimal from 'decimal.js';
 
-// const { Connection } = require('@solana/web3.js');
-// const { getOrca, OrcaPoolConfig } = require('@orca-so/sdk');
-// const Decimal = require('decimal.js');
-
-const mainnetURL = 'https://api.mainnet-beta.solana.com';
+const commitment = 'confirmed';
+const mainnetURL = 'https://ssc-dao.genesysgo.net';
 
 function getUSDCQuoteConfig(token) {
 	const pair = `${token}_USDC`;
@@ -30,3 +27,18 @@ export async function getQuoteFromOrca(token) {
 		throw err;
 	}
 }
+
+export const getOrcaPool = async address => {
+	const publicKey = new PublicKey(address);
+
+	const connection = new Connection(mainnetURL, commitment);
+	const orca = getOrca(connection);
+
+	const orcaSolFarm = orca.getFarm(OrcaFarmConfig.POLIS_USDC_DD);
+
+	const getFarmBalance = await orcaSolFarm.getFarmBalance(publicKey);
+
+	console.log(getFarmBalance.toNumber());
+
+	return getFarmBalance;
+};
