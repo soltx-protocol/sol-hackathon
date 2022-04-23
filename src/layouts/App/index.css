@@ -1,4 +1,8 @@
 .app {
 	display: flex;
 	width: 100%;
+	background-image: url('../../images/background.svg');
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	background-color: #0c1031;
 }

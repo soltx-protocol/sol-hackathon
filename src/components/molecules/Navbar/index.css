@@ -6,7 +6,6 @@
 	height: 100vh;
 	padding: 18px;
 	background-color: #0c1031;
-	border-right: 1px solid var(--divider-20);
 
 	& > .icon {
 		display: flex;
