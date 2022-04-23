@@ -1,13 +1,30 @@
 .navbar {
+	display: flex;
+	flex-direction: column;
+	min-width: 240px;
 	width: 240px;
 	height: 100vh;
 	padding: 18px;
-	background-color: var(--neutral-white);
+	background-color: #0c1031;
 	border-right: 1px solid var(--divider-20);
 
 	& > .icon {
+		display: flex;
+		align-items: center;
+		width: 100%;
 		padding: 6px 10px;
 		margin-bottom: 18px;
+		color: white;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 20px;
+		line-height: 24px;
+
+		& > img {
+			width: 38px;
+			height: 38px;
+			margin-right: 6px;
+		}
 	}
 
 	& > button {
@@ -16,8 +33,6 @@
 		width: 100%;
 		border-radius: 8px;
 		margin-bottom: 4px;
-		background-color: var(--neutral-white);
-		transition: background-color 0.3s ease-out;
 
 		& > div {
 			display: flex;
@@ -30,24 +45,30 @@
 			font-weight: 600;
 			font-size: 16px;
 			line-height: 24px;
-			color: var(--neutral-control-layer);
-			transition: color 0.3s ease-out;
+			color: #d4d4d4;
 
 			& > svg {
 				margin-right: 18px;
 			}
 		}
 
-		&:hover {
-			background-color: #ededfc;
+		&.active > div {
+			color: #f7d684;
 		}
+	}
 
-		&.active {
-			background-color: #ededfc;
+	& > .bottom {
+		display: flex;
+		align-items: center;
+		margin: 0 24px;
+		margin-top: auto;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 20px;
+		color: #23faed;
 
-			& > div {
-				color: #291ccb;
-			}
+		& > svg {
+			margin-right: 10px;
 		}
 	}
 }

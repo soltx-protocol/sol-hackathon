@@ -8,7 +8,11 @@ exports[`__interactive 1`] = `
     <div
       class="icon"
     >
-      <test-file-stub />
+      <img
+        alt="orca"
+        src="test-file-stub"
+      />
+       Hackboard
     </div>
     <button
       class=""
@@ -16,9 +20,24 @@ exports[`__interactive 1`] = `
     >
       <div>
         <test-file-stub />
-         Dashboard
+         Overall
       </div>
     </button>
+    <button
+      class=""
+      type="button"
+    >
+      <div>
+        <test-file-stub />
+         Individual Wallet
+      </div>
+    </button>
+    <div
+      class="bottom"
+    >
+      <test-file-stub />
+      Created by Soltx
+    </div>
   </div>
 </DocumentFragment>
 `;
