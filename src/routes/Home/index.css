@@ -1,8 +1,70 @@
 .home {
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column;
 	width: 100%;
-	padding: 24px;
-	gap: 12px;
-	height: fit-content;
+
+	& > .top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: 90px;
+		background: rgb(68 72 131 / 80%);
+		padding: 0 36px;
+
+		& > .king {
+			display: flex;
+			align-items: center;
+
+			& > .description {
+				font-style: normal;
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 20px;
+				margin-left: 10px;
+				white-space: pre-line;
+				color: #f8f8ff;
+			}
+		}
+
+		& > .wallet {
+			display: flex;
+			align-items: center;
+
+			& > .input {
+				width: 500px;
+				margin-right: 20px;
+			}
+		}
+	}
+
+	& > .search {
+		display: flex;
+		align-items: center;
+		margin: 36px 36px 0;
+
+		& > .title {
+			margin-right: 10px;
+			font-weight: 700;
+			font-size: 16px;
+			line-height: 24px;
+			color: #d9dcff;
+		}
+	}
+
+	& > .header {
+		font-weight: 700;
+		font-size: 24px;
+		line-height: 24px;
+		color: #d9dcff;
+		margin: 12px 36px 32px;
+	}
+
+	& > .content {
+		display: flex;
+		flex-wrap: wrap;
+		height: fit-content;
+		gap: 24px 26px;
+		width: 100%;
+		margin: 0 36px;
+	}
 }

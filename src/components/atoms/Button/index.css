@@ -1,8 +1,8 @@
 :root {
-	--button-normal: var(--primary-cta);
-	--button-normal-hover: var(--primary-cta-hover);
-	--button-normal-active: var(--primary-cta-active);
-	--button-normal-disabled: var(--primary-cta-disabled);
+	--button-normal: #f8d370;
+	--button-normal-hover: #f8d370;
+	--button-normal-active: #f8d370;
+	--button-normal-disabled: #f8d370;
 
 	/* outline */
 	--button-outline: var(--neutral-control-layer);
@@ -38,7 +38,7 @@
 		font-size: 14px;
 		line-height: 20px;
 		text-align: center;
-		color: var(--neutral-white);
+		color: #000;
 		transition: color 0.3s ease-out;
 
 		& > svg {
@@ -47,7 +47,7 @@
 			margin-right: 8px;
 
 			& path {
-				fill: var(--neutral-white);
+				fill: #000;
 			}
 
 			&.right {
