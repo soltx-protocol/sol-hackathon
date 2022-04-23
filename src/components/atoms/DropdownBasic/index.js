@@ -2,20 +2,9 @@ import React, { useRef, useEffect } from 'react';
 import classnames from 'classnames';
 
 import { useBoolean } from 'util/hook';
+import { focusInChildren } from 'util/helper';
 
 import styles from './index.css';
-
-const focusInChildren = (relatedTarget, currentTarget) => {
-	if (relatedTarget === null) {
-		return false;
-	}
-
-	if (relatedTarget === currentTarget) {
-		return true;
-	}
-
-	return focusInChildren(relatedTarget.parentNode, currentTarget);
-};
 
 const DropdownBasic = ({
 	className,

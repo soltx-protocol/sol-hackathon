@@ -1,0 +1,41 @@
+.input-search {
+	position: relative;
+
+	& > .menu {
+		position: absolute;
+		left: 0;
+		top: 100%;
+		width: 100%;
+		z-index: 5;
+		background-color: #585fbb;
+		border-radius: 6px;
+		padding: 8px;
+		outline: none;
+	}
+}
+
+.option {
+	display: flex;
+	min-width: 0;
+	align-items: center;
+	height: 42px;
+	padding: 0 12px;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 20px;
+	color: white;
+	cursor: pointer;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	border-radius: 6px;
+
+	&.is-selected {
+		font-weight: 500;
+	}
+
+	& + .option {
+		margin-top: 4px;
+	}
+}

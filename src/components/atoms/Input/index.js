@@ -5,15 +5,10 @@ import classnames from 'classnames';
 
 // import EyeIcon from 'images/icon/eye-show.inline.svg';
 // import EyeHideIcon from 'images/icon/eye-hide.inline.svg';
-import SearchIcon from 'images/icon/search.inline.svg';
 
 import { isExist } from 'util/helper';
 
 import styles from './index.css';
-
-export const InputSearch = ({ ...other }) => (
-	<Input {...other} type="text" Icon={SearchIcon} isLeftIcon />
-);
 
 const Input = ({
 	className,

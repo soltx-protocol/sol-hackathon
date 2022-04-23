@@ -20,3 +20,15 @@ export const chunk = (str, n) => str.split(new RegExp(`(.{${n}})`)).filter(x => 
 export const isInternetExplorer = () =>
 	window.navigator.userAgent.indexOf('MSIE ') > 0 ||
 	window.navigator.userAgent.indexOf('Trident/') > 0;
+
+export const focusInChildren = (relatedTarget, currentTarget) => {
+	if (relatedTarget === null) {
+		return false;
+	}
+
+	if (relatedTarget === currentTarget) {
+		return true;
+	}
+
+	return focusInChildren(relatedTarget.parentNode, currentTarget);
+};

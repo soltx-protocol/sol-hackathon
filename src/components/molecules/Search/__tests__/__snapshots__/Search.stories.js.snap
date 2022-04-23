@@ -11,17 +11,28 @@ exports[`__interactive 1`] = `
       Pool Search
     </div>
     <div
-      class="input icon isLeftIcon"
+      class="inputSearch"
     >
-      <input
-        type="text"
-      />
-      <button
-        class="icon"
-        type="button"
+      <div
+        class="content"
+        role="button"
+        tabindex="0"
       >
-        <test-file-stub />
-      </button>
+        <div
+          class="input icon isLeftIcon"
+        >
+          <input
+            type="text"
+            value=""
+          />
+          <button
+            class="icon"
+            type="button"
+          >
+            <test-file-stub />
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </DocumentFragment>

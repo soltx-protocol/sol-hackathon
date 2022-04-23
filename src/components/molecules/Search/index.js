@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import { InputSearch } from 'components/atoms/Input';
+import InputSearch from 'components/atoms/InputSearch';
 
 import styles from './index.css';
 
