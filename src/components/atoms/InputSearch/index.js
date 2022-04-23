@@ -43,17 +43,20 @@ const InputSearch = ({
 }) => {
 	const refValue = useRef(null);
 	const refPanel = useRef(null);
-	const [isDropdown, { toggle: togglePanel, setFalse: closePanel }] = useBoolean({
-		onFalse: () => {},
-		onTrue: () => {},
-	});
+	const [isDropdown, { toggle: togglePanel, setFalse: closePanel, setTrue: openPanel }] =
+		useBoolean({
+			onFalse: () => {},
+			onTrue: () => {},
+		});
 
 	const [value, onChangeValue] = useSelect({ initialValue, onChange, propsValue });
 
 	const filterOptions =
-		value.length > 0
+		value.length > 0 && value[0].value !== ''
 			? options.filter(item => item.value.toLowerCase().includes(value[0].value.toLowerCase()))
 			: options;
+
+	console.log(value, filterOptions);
 
 	const onBlur = ({ relatedTarget }) => {
 		if (
@@ -66,6 +69,28 @@ const InputSearch = ({
 			if (value.length === 0 || value[0].value === '') {
 				onClear();
 			}
+		}
+	};
+
+	const onInputBlur = ({ relatedTarget }) => {
+		if (
+			!keepOpen &&
+			!focusInChildren(relatedTarget, refValue.current) &&
+			refPanel.current !== relatedTarget
+		) {
+			closePanel();
+
+			if (value.length === 0 || value[0].value === '') {
+				onClear();
+			}
+		}
+	};
+
+	const onInputChange = e => {
+		onChangeValue({ label: '', value: e.target.value });
+
+		if (!isDropdown) {
+			openPanel();
 		}
 	};
 
@@ -97,8 +122,8 @@ const InputSearch = ({
 					Icon={SearchIcon}
 					isLeftIcon
 					value={value.length > 0 ? value[0].value : ''}
-					onChange={e => onChangeValue({ label: '', value: e.target.value })}
-					onBlur={onBlur}
+					onChange={onInputChange}
+					onBlur={onInputBlur}
 				/>
 			</div>
 			{isDropdown && filterOptions.length > 0 && (
