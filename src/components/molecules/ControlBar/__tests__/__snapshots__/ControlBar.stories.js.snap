@@ -8,7 +8,11 @@ exports[`__interactive 1`] = `
     <div
       class="king"
     >
-      <test-file-stub />
+      <button
+        type="button"
+      >
+        <test-file-stub />
+      </button>
       <div
         class="description"
       >

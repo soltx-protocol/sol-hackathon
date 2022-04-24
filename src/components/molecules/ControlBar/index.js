@@ -43,10 +43,16 @@ const ControlBar = ({ className }) => {
 		setInputValue(account);
 	}, [account]);
 
+	const onClick = () => {
+		history.push('/account/6bm6H7NqcTiVYh3cBBVYsuS5qaA9GhpGyyLQP38s9mzT');
+	};
+
 	return (
 		<div className={classnames(styles.controlBar, className)}>
 			<div className={styles.king}>
-				<KingIcon />
+				<button onClick={onClick} type="button">
+					<KingIcon />
+				</button>
 				<div className={styles.description}>{'Top Asset Owner\nToday'}</div>
 			</div>
 			<div className={styles.wallet}>
