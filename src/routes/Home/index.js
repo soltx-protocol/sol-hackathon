@@ -7,9 +7,11 @@ import {
 	DuneAverageTradingVolumeInFeb2022,
 	DuneDailyActiveWallet,
 	DuneDailyFeeByPool,
+	DuneDailyLPDepositWithdrawByPool,
 	DuneDailySwapCountByPool,
 	DuneFirstTrade,
-	DuneLargestLiquidityProviderOnSOLUSDC,
+	DuneLargestLiquidityProvider,
+	DuneLargestLiquidityProviderTable,
 	DuneLargestLPByPool,
 	DuneLargestTradeByPool,
 	DuneLeastLPByPool,
@@ -17,10 +19,13 @@ import {
 } from 'components/molecules/DuneChart';
 
 import ControlBar from 'components/molecules/ControlBar';
+import { getGlobalFarm } from 'defi/poolConfig';
 import styles from './index.css';
 
 const Home = () => {
 	const [pool, setPool] = useState(null);
+
+	const globalFarm = pool ? getGlobalFarm(pool?.account) : {};
 
 	const onSearch = option => {
 		setPool(option);
@@ -60,7 +65,20 @@ const Home = () => {
 							feeAccount={pool?.feeAccount}
 							tokenAccountB={pool?.tokenAccountB}
 						/>
-						{pool?.value === 'SOL/USDC[aquafarm]' && <DuneLargestLiquidityProviderOnSOLUSDC />}
+						<DuneDailyLPDepositWithdrawByPool
+							globalFarm={globalFarm?.account}
+							farmTokenMint={globalFarm?.farmTokenMint}
+						/>
+						<DuneLargestLiquidityProvider
+							className={styles.largeWide}
+							globalFarm={globalFarm?.account}
+							farmTokenMint={globalFarm?.farmTokenMint}
+						/>
+						<DuneLargestLiquidityProviderTable
+							className={styles.largeWide}
+							globalFarm={globalFarm?.account}
+							farmTokenMint={globalFarm?.farmTokenMint}
+						/>
 						<DuneDailyFeeByPool poolTokenMint={pool?.poolTokenMint} feeAccount={pool?.feeAccount} />
 						<DuneAverageDailyTradingVolumeByPool account={pool?.account} />
 						<DuneDailySwapCountByPool
