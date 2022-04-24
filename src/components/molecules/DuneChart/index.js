@@ -3,6 +3,19 @@ import classnames from 'classnames';
 
 import styles from './index.css';
 
+export const DuneLargestTradeByPool = ({
+	className,
+	account = '87E4KtN7F4LivKhjqXaoQAvS3a8HnM4DnMUrbMrkVvXY',
+	feeAccount = 'BynpQprCNjcY2KHeffDKzquyKWvJxikty3donrMT4ZPU',
+	tokenAccountB = '7LFnr5YgUyEgPMCLGNQ9N7wM5MFRNqCuRawLZTe5q4c7',
+}) => (
+	<iframe
+		className={classnames(styles.duneChart, className)}
+		src={`https://dune.com/embeds/632632/1178944/4b5ef98d-3328-41d9-b8bf-ea1b59402b38?account=${account}&feeAccount=${feeAccount}&tokenAccountB=${tokenAccountB}`}
+		title="Largest Trade By Pool"
+	/>
+);
+
 export const DuneDailyActiveWallet = ({ className }) => (
 	<iframe
 		className={classnames(styles.duneChart, className)}

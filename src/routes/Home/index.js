@@ -8,6 +8,7 @@ import {
 	DuneDailyActiveWallet,
 	DuneDailyFeeByPool,
 	DuneFirstTrade,
+	DuneLargestTradeByPool,
 	DuneTop5Traders,
 } from 'components/molecules/DuneChart';
 
@@ -42,6 +43,11 @@ const Home = () => {
 					<>
 						<DuneAverageDailyTradingVolumeByPool account={pool?.account} />
 						<DuneDailyFeeByPool poolTokenMint={pool?.poolTokenMint} feeAccount={pool?.feeAccount} />
+						<DuneLargestTradeByPool
+							account={pool?.account}
+							feeAccount={pool?.feeAccount}
+							tokenAccountB={pool?.tokenAccountB}
+						/>
 					</>
 				)}
 			</div>
