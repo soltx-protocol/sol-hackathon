@@ -76,8 +76,8 @@ export const DuneDailyActiveWallet = ({
 }) => (
 	<iframe
 		className={classnames(styles.duneChart, className)}
-		src={`https://dune.com/embeds/632565/1178858/8bd05038-3adf-4530-b05e-903ab5a88c5c?account=${account}&feeAccount=${feeAccount}&tokenAccountB=${tokenAccountB}`}
-		title="Daily Active Address Count(Swap)"
+		src={`https://dune.com/embeds/632565/1179795/0a3823f2-ecb4-4d0b-af45-80272c54d35b?account=${account}&feeAccount=${feeAccount}&tokenAccountB=${tokenAccountB}`}
+		title="Daily Active Wallet Count"
 	/>
 );
 
