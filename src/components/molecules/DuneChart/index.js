@@ -19,7 +19,21 @@ export const DuneLeastLPByPool = ({ className, baseTokenMint = 'default' }) => (
 	/>
 );
 
-export const DuneDailyTradeInformationByPool = ({
+export const DuneDailyTradingVolumeByPool = ({
+	className,
+	account = '87E4KtN7F4LivKhjqXaoQAvS3a8HnM4DnMUrbMrkVvXY',
+	feeAccount = 'BynpQprCNjcY2KHeffDKzquyKWvJxikty3donrMT4ZPU',
+	tokenAccountB = '7LFnr5YgUyEgPMCLGNQ9N7wM5MFRNqCuRawLZTe5q4c7',
+	walletAddress = 'default',
+}) => (
+	<iframe
+		className={classnames(styles.duneChart, className)}
+		src={`https://dune.com/embeds/632657/1179007/b82d9653-3109-4a70-b445-7367d3c3e613?account=${account}&feeAccount=${feeAccount}&tokenAccountB=${tokenAccountB}&walletAddress=${walletAddress}`}
+		title="Daily Trading Volume (btoken)"
+	/>
+);
+
+export const DuneDailySwapCountByPool = ({
 	className,
 	account = '87E4KtN7F4LivKhjqXaoQAvS3a8HnM4DnMUrbMrkVvXY',
 	feeAccount = 'BynpQprCNjcY2KHeffDKzquyKWvJxikty3donrMT4ZPU',
@@ -29,7 +43,7 @@ export const DuneDailyTradeInformationByPool = ({
 	<iframe
 		className={classnames(styles.duneChart, className)}
 		src={`https://dune.com/embeds/632565/1178857/1a5b38a3-a4bd-48c7-864e-43345c1858a0?account=${account}&feeAccount=${feeAccount}&tokenAccountB=${tokenAccountB}&walletAddress=${walletAddress}`}
-		title="Daily Trade Information By Pool"
+		title="Daily Swap Count By Pool"
 	/>
 );
 

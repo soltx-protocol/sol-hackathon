@@ -1,6 +1,9 @@
 import AccountInfo from 'components/molecules/AccountInfo';
 import ControlBar from 'components/molecules/ControlBar';
-import { DuneDailyTradeInformationByPool } from 'components/molecules/DuneChart';
+import {
+	DuneDailySwapCountByPool,
+	DuneDailyTradingVolumeByPool,
+} from 'components/molecules/DuneChart';
 import Search from 'components/molecules/Search';
 import { useAccount } from 'models/account';
 import React, { useState } from 'react';
@@ -30,7 +33,13 @@ const Account = () => {
 			<div className={styles.content}>
 				{pool === null ? (
 					<>
-						<DuneDailyTradeInformationByPool
+						<DuneDailySwapCountByPool
+							account="default"
+							feeAccount="default"
+							tokenAccountB="default"
+							walletAddress={account}
+						/>
+						<DuneDailyTradingVolumeByPool
 							account="default"
 							feeAccount="default"
 							tokenAccountB="default"
@@ -39,7 +48,13 @@ const Account = () => {
 					</>
 				) : (
 					<>
-						<DuneDailyTradeInformationByPool
+						<DuneDailySwapCountByPool
+							account={pool?.account}
+							feeAccount={pool?.feeAccount}
+							tokenAccountB={pool?.tokenAccountB}
+							walletAddress={account}
+						/>
+						<DuneDailyTradingVolumeByPool
 							account={pool?.account}
 							feeAccount={pool?.feeAccount}
 							tokenAccountB={pool?.tokenAccountB}
