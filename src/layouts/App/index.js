@@ -16,8 +16,11 @@ const App = ({ children }) => {
 
 	return (
 		<div className={classnames(styles.app, { [styles.atAccount]: atAccountPage })}>
-			<Navbar select={atAccountPage ? NAV_SELECT.ACCOUNT : NAV_SELECT.OVERALL} />
-			{children}
+			<Navbar
+				className={styles.nav}
+				select={atAccountPage ? NAV_SELECT.ACCOUNT : NAV_SELECT.OVERALL}
+			/>
+			<div className={styles.content}>{children}</div>
 			{/* <Footer /> */}
 		</div>
 	);

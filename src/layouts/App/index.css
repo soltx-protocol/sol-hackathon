@@ -1,6 +1,7 @@
 .app {
 	display: flex;
 	width: 100%;
+	position: relative;
 	background-image: url('../../images/background.svg');
 	background-repeat: no-repeat;
 	background-position: bottom right;
@@ -9,5 +10,13 @@
 	&.at-account {
 		background-image: url('../../images/background.svg'), url('../../images/background-ellipse.svg');
 		background-size: 750px 200px, 70%;
+	}
+
+	& > .nav {
+		position: fixed;
+	}
+
+	& > .content {
+		margin-left: 240px;
 	}
 }

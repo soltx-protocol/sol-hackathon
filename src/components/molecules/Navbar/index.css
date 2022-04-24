@@ -3,7 +3,7 @@
 	flex-direction: column;
 	min-width: 240px;
 	width: 240px;
-	height: 100vh;
+	min-height: 100vh;
 	padding: 18px;
 	background-color: #0c1031;
 
