@@ -24,6 +24,7 @@ Today
       >
         <input
           placeholder="Insert wallet address"
+          value=""
         />
       </div>
       <button

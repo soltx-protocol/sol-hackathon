@@ -5,4 +5,16 @@ import ControlBar from 'components/molecules/ControlBar';
 
 const stories = storiesOf('molecules/ControlBar', module);
 
-stories.add('__interactive', () => <ControlBar />);
+stories.add('__interactive', () => <ControlBar />, {
+	redux: {
+		data: {
+			account: {
+				address: '',
+				pools: [],
+			},
+			routing: {
+				pathname: '/',
+			},
+		},
+	},
+});

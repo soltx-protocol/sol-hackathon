@@ -1,4 +1,4 @@
-import { setAccount } from 'models/account';
+import { cleanAccount, setAccount } from 'models/account';
 import React from 'react';
 
 export default {
@@ -10,9 +10,10 @@ export default {
 			path: '',
 			components: () => [import(/* webpackChunkName: 'account' */ './Home')],
 			render: ([Account]) => <Account />,
-			onEnter: async ({ next }) => {
+			onEnter: async ({ store, next }) => {
 				console.log('on Enter Account');
 
+				store.dispatch(cleanAccount());
 				const children = await next();
 
 				console.log('on Enter Account / end');
@@ -29,6 +30,7 @@ export default {
 
 				const { id } = params;
 
+				store.dispatch(cleanAccount());
 				store.dispatch(setAccount(id));
 
 				const children = await next();
