@@ -7,6 +7,7 @@ import {
 	DuneAverageTradingVolumeInFeb2022,
 	DuneDailyActiveWallet,
 	DuneDailyFeeByPool,
+	DuneDailyTradeInformationByPool,
 	DuneFirstTrade,
 	DuneLargestLiquidityProviderOnSOLUSDC,
 	DuneLargestTradeByPool,
@@ -35,17 +36,23 @@ const Home = () => {
 			<div className={styles.content}>
 				{pool === null ? (
 					<>
+						<DuneFirstTrade className={styles.wide} />
 						<DuneDailyActiveWallet />
 						<DuneAverageTradingVolumeInFeb2022 />
-						<DuneFirstTrade />
 						<DuneTop5Traders />
 					</>
 				) : (
 					<>
-						{pool?.value === 'SOL/USDC[aquafarm]' && <DuneLargestLiquidityProviderOnSOLUSDC />}
-						<DuneAverageDailyTradingVolumeByPool account={pool?.account} />
-						<DuneDailyFeeByPool poolTokenMint={pool?.poolTokenMint} feeAccount={pool?.feeAccount} />
 						<DuneLargestTradeByPool
+							className={styles.wide}
+							account={pool?.account}
+							feeAccount={pool?.feeAccount}
+							tokenAccountB={pool?.tokenAccountB}
+						/>
+						{pool?.value === 'SOL/USDC[aquafarm]' && <DuneLargestLiquidityProviderOnSOLUSDC />}
+						<DuneDailyFeeByPool poolTokenMint={pool?.poolTokenMint} feeAccount={pool?.feeAccount} />
+						<DuneAverageDailyTradingVolumeByPool account={pool?.account} />
+						<DuneDailyTradeInformationByPool
 							account={pool?.account}
 							feeAccount={pool?.feeAccount}
 							tokenAccountB={pool?.tokenAccountB}
