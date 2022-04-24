@@ -5,6 +5,7 @@ import Avatar from 'images/avatar.png';
 
 import Search from 'components/molecules/Search';
 import ControlBar from 'components/molecules/ControlBar';
+import AccountInfo from 'components/molecules/AccountInfo';
 
 import styles from './index.css';
 
@@ -13,11 +14,7 @@ const Account = () => {
 		<div className={styles.account}>
 			<ControlBar className={styles.top} />
 			<Search className={styles.search} />
-			<div className={styles.description}>
-				<div className={styles.header}>Individual Account </div>
-				<div className={styles.account}>-</div>
-				<div className={styles.coin}>Asset:</div>
-			</div>
+			<AccountInfo className={styles.accountInfo} />
 
 			<div className={styles.introduction}>
 				<img src={Avatar} alt="avatar" />

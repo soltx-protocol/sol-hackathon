@@ -25,7 +25,7 @@ const reducer = {
 };
 
 const mapHooksToState = state => ({
-	account: state.account.posts,
+	account: state.account.address,
 });
 
 export const useAccount = () => useRedux(mapHooksToState, { setAccount, cleanAccount });
