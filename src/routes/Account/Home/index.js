@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader/root';
 
 import Avatar from 'images/avatar.png';
 
-import Search from 'components/molecules/Search';
+// import { SearchByAccount } from 'components/molecules/Search';
 import ControlBar from 'components/molecules/ControlBar';
 import AccountInfo from 'components/molecules/AccountInfo';
 
@@ -13,7 +13,7 @@ const Account = () => {
 	return (
 		<div className={styles.account}>
 			<ControlBar className={styles.top} />
-			<Search className={styles.search} />
+			{/* <SearchByAccount className={styles.search} /> */}
 			<AccountInfo className={styles.accountInfo} />
 
 			<div className={styles.introduction}>

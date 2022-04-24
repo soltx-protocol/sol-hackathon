@@ -1,26 +1,45 @@
 import AccountInfo from 'components/molecules/AccountInfo';
 import ControlBar from 'components/molecules/ControlBar';
-import DuneChart from 'components/molecules/DuneChart';
+import { DuneDailyTradeInformationByPool } from 'components/molecules/DuneChart';
 import Search from 'components/molecules/Search';
 import { useAccount } from 'models/account';
-import React from 'react';
+import React, { useState } from 'react';
 import { hot } from 'react-hot-loader/root';
 
 import styles from './index.css';
 
 const Account = () => {
 	const [{ account }] = useAccount();
+	const [pool, setPool] = useState(null);
+
+	const onSearch = option => {
+		setPool(option);
+	};
+
+	const onClear = () => {
+		setPool(null);
+	};
 
 	return (
 		<div className={styles.account}>
 			<ControlBar className={styles.top} />
-			<Search className={styles.search} />
+			{/* <SearchByAccount className={styles.search} onSearch={onSearch} onClear={onClear} /> */}
+			<Search className={styles.search} onSearch={onSearch} onClear={onClear} />
 			<AccountInfo className={styles.accountInfo} />
 
 			<div className={styles.content}>
-				<DuneChart />
-				<DuneChart poolAccount={account} />
-				<DuneChart poolAccount={account} />
+				{pool === null ? (
+					<></>
+				) : (
+					<>
+						<DuneDailyTradeInformationByPool
+							account={pool?.account}
+							feeAccount={pool?.feeAccount}
+							tokenAccountB={pool?.tokenAccountB}
+							walletAddress={account}
+						/>
+					</>
+				)}
 			</div>
 		</div>
 	);
