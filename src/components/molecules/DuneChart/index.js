@@ -6,7 +6,7 @@ import styles from './index.css';
 export const DuneLargestLPByPool = ({ className, baseTokenMint = 'default' }) => (
 	<iframe
 		className={classnames(styles.duneChart, className)}
-		src={`https://dune.com/embeds/633010/1179622/92053c66-dde6-4c64-b918-1a06d11450ed?baseTokenMint=${baseTokenMint}`}
+		src={`https://dune.com/embeds/633010/1179622/46fdb409-f004-4838-8b52-ac3d3d61307e?baseTokenMint=${baseTokenMint}`}
 		title="Largest Amount of Liquidity By Pool"
 	/>
 );
@@ -54,11 +54,16 @@ export const DuneLargestTradeByPool = ({
 	/>
 );
 
-export const DuneDailyActiveWallet = ({ className }) => (
+export const DuneDailyActiveWallet = ({
+	className,
+	account = 'default',
+	feeAccount = 'default',
+	tokenAccountB = 'default',
+}) => (
 	<iframe
 		className={classnames(styles.duneChart, className)}
-		src="https://dune.com/embeds/632045/1177839/e923fa08-4827-4c63-855e-3a9cb7a23068"
-		title="Daily Active Wallet"
+		src={`https://dune.com/embeds/632565/1178858/8bd05038-3adf-4530-b05e-903ab5a88c5c?account=${account}&feeAccount=${feeAccount}&tokenAccountB=${tokenAccountB}`}
+		title="Daily Active Address Count(Swap)"
 	/>
 );
 

@@ -55,6 +55,11 @@ const Home = () => {
 						/>
 						<DuneLargestLPByPool className={styles.wide} baseTokenMint={pool?.baseTokenMint} />
 						<DuneLeastLPByPool className={styles.wide} baseTokenMint={pool?.baseTokenMint} />
+						<DuneDailyActiveWallet
+							account={pool?.account}
+							feeAccount={pool?.feeAccount}
+							tokenAccountB={pool?.tokenAccountB}
+						/>
 						{pool?.value === 'SOL/USDC[aquafarm]' && <DuneLargestLiquidityProviderOnSOLUSDC />}
 						<DuneDailyFeeByPool poolTokenMint={pool?.poolTokenMint} feeAccount={pool?.feeAccount} />
 						<DuneAverageDailyTradingVolumeByPool account={pool?.account} />
