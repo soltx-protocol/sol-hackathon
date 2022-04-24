@@ -3,6 +3,14 @@ import classnames from 'classnames';
 
 import styles from './index.css';
 
+export const DuneLargestLiquidityProviderOnSOLUSDC = ({ className }) => (
+	<iframe
+		className={classnames(styles.duneChart, className)}
+		src="https://dune.com/embeds/630797/1177796/0d0169ec-bb2c-4b82-937e-4ec94bdf62cf"
+		title="The Largest Liquidity Provider"
+	/>
+);
+
 export const DuneLargestTradeByPool = ({
 	className,
 	account = '87E4KtN7F4LivKhjqXaoQAvS3a8HnM4DnMUrbMrkVvXY',

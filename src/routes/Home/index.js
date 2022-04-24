@@ -8,6 +8,7 @@ import {
 	DuneDailyActiveWallet,
 	DuneDailyFeeByPool,
 	DuneFirstTrade,
+	DuneLargestLiquidityProviderOnSOLUSDC,
 	DuneLargestTradeByPool,
 	DuneTop5Traders,
 } from 'components/molecules/DuneChart';
@@ -41,6 +42,7 @@ const Home = () => {
 					</>
 				) : (
 					<>
+						{pool?.value === 'SOL/USDC[aquafarm]' && <DuneLargestLiquidityProviderOnSOLUSDC />}
 						<DuneAverageDailyTradingVolumeByPool account={pool?.account} />
 						<DuneDailyFeeByPool poolTokenMint={pool?.poolTokenMint} feeAccount={pool?.feeAccount} />
 						<DuneLargestTradeByPool
