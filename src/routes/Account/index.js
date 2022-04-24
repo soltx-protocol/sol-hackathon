@@ -29,8 +29,6 @@ export default {
 
 				const { id } = params;
 
-				console.log(id);
-
 				store.dispatch(setAccount(id));
 
 				const children = await next();

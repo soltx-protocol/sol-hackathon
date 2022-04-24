@@ -56,8 +56,6 @@ const InputSearch = ({
 			? options.filter(item => item.value.toLowerCase().includes(value[0].value.toLowerCase()))
 			: options;
 
-	console.log(value, filterOptions);
-
 	const onBlur = ({ relatedTarget }) => {
 		if (
 			!keepOpen &&
