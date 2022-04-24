@@ -1,8 +1,15 @@
+import { PublicKey } from '@solana/web3.js';
 import { getOrcaPool } from 'defi/orca';
 import { createAction, handleActions } from 'redux-actions';
 import { useRedux } from 'util/hook/redux';
 
 export const setAccount = createAction('SET_ACCOUNT', async account => {
+	const publicKey = new PublicKey(account);
+
+	if (!PublicKey.isOnCurve(publicKey)) {
+		return { account: '', pools: [] };
+	}
+
 	const result = await getOrcaPool(account);
 
 	console.log(result);

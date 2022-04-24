@@ -29,7 +29,14 @@ const Account = () => {
 
 			<div className={styles.content}>
 				{pool === null ? (
-					<></>
+					<>
+						<DuneDailyTradeInformationByPool
+							account="default"
+							feeAccount="default"
+							tokenAccountB="default"
+							walletAddress={account}
+						/>
+					</>
 				) : (
 					<>
 						<DuneDailyTradeInformationByPool
