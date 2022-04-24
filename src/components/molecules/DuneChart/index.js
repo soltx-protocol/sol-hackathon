@@ -3,6 +3,22 @@ import classnames from 'classnames';
 
 import styles from './index.css';
 
+export const DuneLargestLPByPool = ({ className, baseTokenMint = 'default' }) => (
+	<iframe
+		className={classnames(styles.duneChart, className)}
+		src={`https://dune.com/embeds/633010/1179622/92053c66-dde6-4c64-b918-1a06d11450ed?baseTokenMint=${baseTokenMint}`}
+		title="Largest Amount of Liquidity By Pool"
+	/>
+);
+
+export const DuneLeastLPByPool = ({ className, baseTokenMint = 'default' }) => (
+	<iframe
+		className={classnames(styles.duneChart, className)}
+		src={`https://dune.com/embeds/633044/1179675/22086f6f-0577-435b-a460-a92bbb59ba97?baseTokenMint=${baseTokenMint}`}
+		title="Least Amount of Liquidity By Pool"
+	/>
+);
+
 export const DuneDailyTradeInformationByPool = ({
 	className,
 	account = '87E4KtN7F4LivKhjqXaoQAvS3a8HnM4DnMUrbMrkVvXY',

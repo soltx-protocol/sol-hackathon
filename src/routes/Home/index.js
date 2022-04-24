@@ -10,7 +10,9 @@ import {
 	DuneDailyTradeInformationByPool,
 	DuneFirstTrade,
 	DuneLargestLiquidityProviderOnSOLUSDC,
+	DuneLargestLPByPool,
 	DuneLargestTradeByPool,
+	DuneLeastLPByPool,
 	DuneTop5Traders,
 } from 'components/molecules/DuneChart';
 
@@ -37,6 +39,8 @@ const Home = () => {
 				{pool === null ? (
 					<>
 						<DuneFirstTrade className={styles.wide} />
+						<DuneLargestLPByPool className={styles.wide} />
+						<DuneLeastLPByPool className={styles.wide} />
 						<DuneDailyActiveWallet />
 						<DuneAverageTradingVolumeInFeb2022 />
 						<DuneTop5Traders />
@@ -49,6 +53,8 @@ const Home = () => {
 							feeAccount={pool?.feeAccount}
 							tokenAccountB={pool?.tokenAccountB}
 						/>
+						<DuneLargestLPByPool className={styles.wide} baseTokenMint={pool?.baseTokenMint} />
+						<DuneLeastLPByPool className={styles.wide} baseTokenMint={pool?.baseTokenMint} />
 						{pool?.value === 'SOL/USDC[aquafarm]' && <DuneLargestLiquidityProviderOnSOLUSDC />}
 						<DuneDailyFeeByPool poolTokenMint={pool?.poolTokenMint} feeAccount={pool?.feeAccount} />
 						<DuneAverageDailyTradingVolumeByPool account={pool?.account} />
